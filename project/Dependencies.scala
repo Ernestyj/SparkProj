@@ -2,12 +2,16 @@ import sbt._
 
 object Dependencies {
     // Versions
-//    lazy val akkaVersion = "2.3.8"
+    lazy val sparkVersion = "1.6.0"
+    lazy val sparkCassConnVersion = "1.5.0"
     // Libraries
-//    val akkaActor = "com.typesafe.akka" %% "akka-actor" % akkaVersion
-//    val specs2core = "org.specs2" %% "specs2-core" % "2.4.14"
-    val sparkCore= "org.apache.spark" % "spark-core_2.10" % "1.6.0" //2.10.6部分获取失败
+    val sparkCore = "org.apache.spark" % "spark-core_2.10" % sparkVersion //2.10.6部分获取失败
+    val sparkSQL = "org.apache.spark" % "spark-sql_2.10" % sparkVersion
+    val sparkMLLib = "org.apache.spark" % "spark-mllib_2.10" % sparkVersion
+
+    val sparkCassandraConnector = "com.datastax.spark" % "spark-cassandra-connector_2.10" % sparkCassConnVersion
+    val sparkCassandraConnectorEmbedded = "com.datastax.spark" % "spark-cassandra-connector-embedded_2.10" % sparkCassConnVersion
     // Projects
-//    val backendDeps = Seq(akkaActor, specs2core % Test)
-    val rootDependencies = Seq(sparkCore)
+    val rootDependencies = Seq(sparkCore, sparkSQL, sparkMLLib,
+        sparkCassandraConnector)
 }
