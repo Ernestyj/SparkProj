@@ -10,12 +10,14 @@ object CassandraTest {
     def main(args: Array[String]) {
         val conf = new SparkConf(true).
 //            set("spark.cassandra.connection.host", "192.168.1.106").
-            set("spark.cassandra.connection.host", "202.120.40.111")
+//            set("spark.cassandra.connection.host", "202.120.40.111")
+            set("spark.cassandra.connection.host", "121.41.126.207")
         val sc = new SparkContext("local", "test", conf)
 
         val conn = CassandraConnector(conf)
         conn.withSessionDo{ session =>
-            var result = session.execute("select * from stock_market.stock_day_open")
+//            var result = session.execute("select * from stock_market.stock_day_open")
+            var result = session.execute("select * from test.kv")
             println(result.one())
         }
 //        val rdd = sc.cassandraTable("stock_market", "stock_day_open")
