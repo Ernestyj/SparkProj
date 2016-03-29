@@ -17,16 +17,20 @@ object CassandraTest {
             set("spark.cassandra.connection.host", "10.253.26.54")
         val sc = new SparkContext("local", "test", conf)
 
+        //session访问方式
 //        val conn = CassandraConnector(conf)
 //        conn.withSessionDo{ session =>
 ////            var result = session.execute("select * from stock_market.stock_day_open")
 //            var result = session.execute("select * from market_quotation.stock_day_open")
 //            println(result.one())
 //        }
+
+        //另一种访问方式
         val tableRDD = sc.cassandraTable[CassandraRow]("market_quotation", "stock_day_open")
         val stock = tableRDD.where("stock=?", "000001.SZ")
         stock.foreach(col => println(col.get[String]("day").toString+" "+col.get[Float]("open")))
 
+        //存储示例
 //        val collection = sc.parallelize(Seq(("key3", 3), ("key4", 4)))
 //        collection.saveToCassandra("test", "kv", SomeColumns("key", "value"))
 

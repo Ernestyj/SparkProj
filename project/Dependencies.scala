@@ -10,8 +10,9 @@ object Dependencies {
     val sparkMLLib = "org.apache.spark" % "spark-mllib_2.10" % sparkVersion
 
     val sparkCassandraConnector = "com.datastax.spark" % "spark-cassandra-connector_2.10" % sparkCassConnVersion
-    val sparkCassandraConnectorEmbedded = "com.datastax.spark" % "spark-cassandra-connector-embedded_2.10" % sparkCassConnVersion
+//    val sparkCassandraConnectorEmbedded = "com.datastax.spark" % "spark-cassandra-connector-embedded_2.10" % sparkCassConnVersion
     // Projects
     val rootDependencies = Seq(sparkCore, sparkSQL, sparkMLLib,
         sparkCassandraConnector)
+
 }
