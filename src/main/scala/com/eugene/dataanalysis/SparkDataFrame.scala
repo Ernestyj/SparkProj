@@ -1,7 +1,7 @@
 package com.eugene.dataanalysis
 
 import java.sql.Timestamp
-
+import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkConf, SparkContext}
 import com.databricks.spark.csv._
@@ -18,7 +18,7 @@ object SparkDataFrame {
 
         val stock = sqlContext.csvFile(filePath = "src/main/resources/wsd_000001.SZ_2015.csv",
             useHeader = true, delimiter = '\t')
-//        stock.printSchema()
+        stock.printSchema()
 //        stock.show()
 //        stock.take(5).foreach(println)
 //        val ohlc = stock.select("OPEN","HIGH","LOW","CLOSE")
